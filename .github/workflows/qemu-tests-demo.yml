@@ -1,0 +1,22 @@
+name: CI for QEMUTests
+
+# Run this workflow every time a commit gets pushed to main or a pull request gets opened against main
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches: 
+      - main
+
+jobs:
+    build:
+        name: Call Azure Devops Pipeline
+        runs-on: ubuntu-latest
+        steps:
+        - name:  Kick off ADO QEMU Test pipepline
+          uses: Azure/pipelines@v1
+          with:
+            azure-devops-project-url: https://dev.azure.com/msazuresphere/AzureSphere
+            azure-pipeline-name: 'azure-sphere-oss-migration-test-demo-QEMUTests-stub'
+            azure-devops-token: ${{ secrets.AZURE_DEVOPS_TOKEN }}
