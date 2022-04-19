@@ -6,25 +6,31 @@ name: HWBVT stub workflow
 # or API.
 on:
   workflow_dispatch:
-    # Inputs the workflow accepts.
-    inputs:
-      name:
-        # Friendly description to be shown in the UI instead of 'name'
-        description: 'Person to greet'
-        # Default value if no value is explicitly provided
-        default: 'World'
-        # Input has to be provided for the workflow to run
-        required: true
+#     # Inputs the workflow accepts.
+#     inputs:
+#       name:
+#         # Friendly description to be shown in the UI instead of 'name'
+#         description: 'Person to greet'
+#         # Default value if no value is explicitly provided
+#         default: 'World'
+#         # Input has to be provided for the workflow to run
+#         required: true
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   # This workflow contains a single job called "greet"
-  greet:
+  hwbvt:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-    # Runs a single command using the runners shell
-    - name: Send greeting
-      run: echo "Hello ${{ github.event.inputs.name }}"
+    # # Runs a single command using the runners shell
+    # - name: Send greeting
+    #   run: echo "Hello ${{ github.event.inputs.name }}"
+    - uses: Azure/pipelines@v1
+      with:
+        azure-devops-project-url: 'https://dev.azure.com/msazuresphere/AzureSphere'
+        azure-pipeline-name: 'azure-sphere-oss-migration-test-demo-HW-BVT-stub' # name of the Azure pipeline to be triggered
+        azure-devops-token: '${{ secrets.AZURE_DEVOPS_TOKEN }}'
+        # azure-pipeline-variables:  '{"variable1": "value1", "variable2": "value2"}' # optional stringified json    
