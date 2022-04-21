@@ -1,0 +1,9 @@
+trigger:
+  - main
+
+# Stub pipeline that does nothing but can be used to trigger pipelines based on Github CI events without having to setup Actions or a custom Webhook system.
+
+pool: server
+steps:
+- task: Delay@1
+  displayName: 'Do nothing'
