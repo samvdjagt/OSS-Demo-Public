@@ -7,5 +7,10 @@ pool:
   vmImage: ubuntu-latest
 
 steps:
-- script: echo QEMU Tests ran!
+- checkout: self
+- script: |
+    echo QEMU Tests ran!
+    git status
   displayName: 'Run QEMU Tests'
+  workingDirectory: $(Build.SourcesDirectory)
+
