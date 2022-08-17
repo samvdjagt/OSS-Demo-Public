@@ -9,7 +9,15 @@
       "config": {
         "conditions": {
           "operator": "and",
-          "operands": []
+          "operands": [
+            {
+              "name": "activitySenderHasPermissions",
+              "parameters": {
+                "permissions": "none",
+                "association": "NONE"
+              }
+            }
+          ]
         },
         "eventType": "pull_request",
         "eventNames": [
@@ -22,7 +30,7 @@
           {
             "name": "addReply",
             "parameters": {
-              "comment": "Hi ${issueAuthor}, this is a test comment."
+              "comment": "Hi ${issueAuthor}, this is a test comment that should only be sent to non-AzureSphere team members."
             }
           }
         ]
