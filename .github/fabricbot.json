@@ -8,18 +8,12 @@
       "version": "1.0",
       "config": {
         "conditions": {
-          "operator": "or",
+          "operator": "and",
           "operands": [
             {
               "name": "activitySenderHasAssociation",
               "parameters": {
                 "association": "CONTRIBUTOR"
-              }
-            },
-            {
-              "name": "activitySenderHasAssociation",
-              "parameters": {
-                "association": "FIRST_TIME_CONTRIBUTOR"
               }
             }
           ]
