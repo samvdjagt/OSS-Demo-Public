@@ -11,9 +11,8 @@
           "operator": "and",
           "operands": [
             {
-              "name": "activitySenderHasPermissions",
+              "name": "activitySenderHasAssociation",
               "parameters": {
-                "permissions": "none",
                 "association": "NONE"
               }
             }
@@ -25,12 +24,12 @@
           "issues",
           "project_card"
         ],
-        "taskName": "Test FabricBot PR comment task",
+        "taskName": "Test FabricBot for PRs",
         "actions": [
           {
             "name": "addReply",
             "parameters": {
-              "comment": "Hi ${issueAuthor}, this is a test comment that should only be sent to non-AzureSphere team members."
+              "comment": "Hi ${issueAuthor}.  This message should only be seen by non-azs team members."
             }
           }
         ]
