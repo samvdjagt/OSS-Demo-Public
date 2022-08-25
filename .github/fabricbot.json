@@ -11,10 +11,92 @@
           "operator": "and",
           "operands": [
             {
-              "name": "activitySenderHasAssociation",
-              "parameters": {
-                "association": "CONTRIBUTOR"
-              }
+              "operator": "or",
+              "operands": [
+                {
+                  "name": "isAction",
+                  "parameters": {
+                    "action": "opened"
+                  }
+                },
+                {
+                  "name": "isAction",
+                  "parameters": {
+                    "action": "reopened"
+                  }
+                }
+              ]
+            },
+            {
+              "operator": "and",
+              "operands": [
+                {
+                  "operator": "not",
+                  "operands": [
+                    {
+                      "name": "hasLabel",
+                      "parameters": {
+                        "label": "Check Required"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "operator": "not",
+                  "operands": [
+                    {
+                      "name": "activitySenderHasPermissions",
+                      "parameters": {
+                        "permissions": "admin"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "operator": "not",
+                  "operands": [
+                    {
+                      "name": "activitySenderHasPermissions",
+                      "parameters": {
+                        "permissions": "write"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "operator": "not",
+                  "operands": [
+                    {
+                      "name": "activitySenderHasPermissions",
+                      "parameters": {
+                        "permissions": "none"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "operator": "not",
+                  "operands": [
+                    {
+                      "name": "activitySenderHasAssociation",
+                      "parameters": {
+                        "association": "OWNER"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "operator": "not",
+                  "operands": [
+                    {
+                      "name": "activitySenderHasAssociation",
+                      "parameters": {
+                        "association": "MEMBER"
+                      }
+                    }
+                  ]
+                }
+              ]
             }
           ]
         },
@@ -24,12 +106,18 @@
           "issues",
           "project_card"
         ],
-        "taskName": "Test FabricBot for PRs",
+        "taskName": "Test PR",
         "actions": [
           {
             "name": "addReply",
             "parameters": {
-              "comment": "Hi ${issueAuthor}.  This message should only be seen by non-azs team members."
+              "comment": "Thank you for your pull request, ${issueAuthor}. It will be reviewed by the Azure Sphere team. \n\nBeyond the pull request reviewers approval, there will be additional pipeline checks required before changes can be merged into this repository branch."
+            }
+          },
+          {
+            "name": "addLabel",
+            "parameters": {
+              "label": "Check Required"
             }
           }
         ]
